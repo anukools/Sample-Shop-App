@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "E:\\software\\test\\ecommerce\\ECommerce-App-Android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi-v4\\header_1.jpg",
+        "source": "E:\\software\\test\\ecommerce\\ECommerce-App-Android\\app\\src\\main\\res\\drawable-nodpi\\header_1.jpg"
+    },
+    {
+        "merged": "E:\\software\\test\\ecommerce\\ECommerce-App-Android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi-v4\\nav_header_bg.png",
+        "source": "E:\\software\\test\\ecommerce\\ECommerce-App-Android\\app\\src\\main\\res\\drawable-nodpi\\nav_header_bg.png"
+    },
+    {
+        "merged": "E:\\software\\test\\ecommerce\\ECommerce-App-Android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi-v4\\header2.jpg",
+        "source": "E:\\software\\test\\ecommerce\\ECommerce-App-Android\\app\\src\\main\\res\\drawable-nodpi\\header2.jpg"
+    }
+]
