@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.WindowManager;
@@ -45,6 +46,8 @@ public class PointerService extends Service {
             soundPlayer = new SoundPlayer();
 
             PointerService.bus.register(this);
+
+            Log.e("Pointer : ", "startUIService registered");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -62,6 +65,7 @@ public class PointerService extends Service {
 
     @Subscribe
     public void showPointerUIEvent(final BusEvents.ShowUIEvent event) {
+        Log.e("Pointer : ", "showPointerUIEvent");
         pointerIcon.show(event.getX(), event.getY(), event.getGravity());
         jinyIcon.show();
 
@@ -69,9 +73,9 @@ public class PointerService extends Service {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-//                soundPlayer.play(getApplicationContext(), event.getSoundResId());
+                soundPlayer.play(getApplicationContext(), event.getSoundResId());
             }
-        }, 1000);
+        }, 500);
     }
 
     @Subscribe
@@ -83,7 +87,7 @@ public class PointerService extends Service {
         if(event.isHideJinyIcon()){
             jinyIcon.hide();
         }
-//        soundPlayer.stop();
+        soundPlayer.stop();
    }
 
     @Subscribe

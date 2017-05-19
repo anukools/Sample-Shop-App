@@ -15,6 +15,7 @@ import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -213,7 +214,13 @@ public class HomeFragment extends Fragment implements AppBarLayout.OnOffsetChang
         @Override
         public void onGlobalLayout() {
             // Layout has happened here.
-            UIViewsHandler.sendViewEvent(getActivity(), searchFabButton);
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    UIViewsHandler.sendViewEvent(getActivity(), searchFabButton);
+                }
+            }, 500);
 
             // Don't forget to remove your listener when you are done with it.
             searchFabButton.getViewTreeObserver().removeOnGlobalLayoutListener(this);
@@ -224,6 +231,7 @@ public class HomeFragment extends Fragment implements AppBarLayout.OnOffsetChang
     public void onStart() {
         super.onStart();
 
+        Log.e("Pointer : ", "OnStart");
         searchFabButton.getViewTreeObserver().addOnGlobalLayoutListener(globalLayoutListener);
 
     }
@@ -240,7 +248,7 @@ public class HomeFragment extends Fragment implements AppBarLayout.OnOffsetChang
     @Override
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
         if(searchFabButton.getVisibility() == View.VISIBLE && searchFabButton.getX() != 0) {
-            UIViewsHandler.sendViewAnimateEvent(getActivity(), searchFabButton);
+//            UIViewsHandler.sendViewAnimateEvent(getActivity(), searchFabButton);
         }else {
             BusEvents.HideEvent hideEvent = new BusEvents.HideEvent();
             hideEvent.setHideJinyIcon(false);

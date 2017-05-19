@@ -25,7 +25,7 @@ public class UIViewsHandler {
             event.setX(50);
             event.setY(AppUtils.getScreenHeight(context) / 2 - 100);
             event.setGravity(Gravity.TOP | Gravity.END);
-            event.setSoundResId(R.raw.feedback_1);
+            event.setSoundResId(R.raw.search_from_list);
             PointerService.bus.post(event);
 
         }
@@ -40,7 +40,7 @@ public class UIViewsHandler {
             event.setX(50);
             event.setY(AppUtils.getScreenHeight(context)  - 100 );
             event.setGravity(Gravity.TOP | Gravity.END);
-            event.setSoundResId(R.raw.feedback_1);
+            event.setSoundResId(R.raw.checkout);
             PointerService.bus.post(event);
         }
     }
@@ -61,7 +61,9 @@ public class UIViewsHandler {
     }
 
     public static void sendViewEvent(Context context, View view) {
-        if (view.getVisibility() == View.VISIBLE) {
+//        if (view.getVisibility() == View.VISIBLE) {
+
+        Log.e("Pointer : ", "sendViewEvent");
             // post event bus to show pointer
             BusEvents.ShowUIEvent event = new BusEvents.ShowUIEvent();
 
@@ -69,13 +71,15 @@ public class UIViewsHandler {
             view.getGlobalVisibleRect(rect);
 
             maxHeight = (int) rect.exactCenterY();
+//            event.setX((AppUtils.getScreenWidth(context) - view.getX()) / 2);
+//            event.setY((AppUtils.getScreenHeight(context) - view.getY()) / 2);
 
-            event.setX((AppUtils.getScreenWidth(context) - view.getX()) / 2);
-            event.setY((AppUtils.getScreenHeight(context) - view.getY()) / 2);
-            event.setSoundResId(R.raw.feedback_2);
+            event.setX(AppUtils.getScreenWidth(context) / 2);
+            event.setY(AppUtils.getScreenHeight(context) / 2);
+            event.setSoundResId(R.raw.search);
             event.setGravity(Gravity.TOP | Gravity.END);
             PointerService.bus.post(event);
-        }
+//        }
     }
 
 }

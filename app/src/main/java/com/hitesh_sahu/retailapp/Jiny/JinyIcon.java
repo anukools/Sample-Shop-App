@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.graphics.PixelFormat;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -77,6 +78,7 @@ public class JinyIcon {
 
     public void hide() {
         if (jinyView != null) {
+            Log.e("Pointer : ", "Jiny Hide");
             if (jinyView.getVisibility() == View.VISIBLE) {
                 jinyView.setVisibility(View.GONE);
             }
@@ -85,8 +87,10 @@ public class JinyIcon {
 
     public void show() {
         try {
+
             if (jinyView != null) {
 
+                Log.e("Pointer : ", "Jiny Show");
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -97,7 +101,7 @@ public class JinyIcon {
                         jinyView.bringToFront();
 
                     }
-                }, 500);
+                }, 300);
 
 
             }
